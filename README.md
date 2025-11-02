@@ -2,17 +2,6 @@
 
 A React Native app to discover places and generate travel plans using AI.
 
-## Table of contents
-
-- About
-- Tech stack
-- Getting started
-- Environment variables
-- Running the app
-- Security & publishing checklist
-- Project structure
-- Contributing
-
 ## About
 
 JomTravel is a trip-planning companion built with Expo and React Native. The app uses Google Places / Maps APIs, Firebase, and a generative AI helper (via `@google/generative-ai`) to generate trip itineraries.
@@ -23,7 +12,6 @@ JomTravel is a trip-planning companion built with Expo and React Native. The app
 - React Native
 - Firebase (Auth + Firestore)
 - Google Places / Maps API
-- @google/generative-ai
 
 ## Getting started
 
