@@ -1,6 +1,7 @@
 # JomTravel
 
 A React Native app to discover places and generate travel plans using AI.
+View promotional video here: https://youtu.be/m2JOK6R1Vfg
 
 ## About
 
