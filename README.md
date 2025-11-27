@@ -1,65 +1,43 @@
 # JomTravel
-
-A React Native app to discover places and generate travel plans using AI.
 View promotional video here: https://youtu.be/m2JOK6R1Vfg
 
 ## About
 
-JomTravel is a trip-planning companion built with Expo and React Native. The app uses Google Places / Maps APIs, Firebase, and a generative AI helper (via `@google/generative-ai`) to generate trip itineraries.
+JomTravel is a trip-planning companion built to simplifying itinerary planning among travellers using AI. 
 
 ## Tech stack
 
-- Expo
-- React Native
+- React Native Expo
 - Firebase (Auth + Firestore)
-- Google Places / Maps API
+- Google Places API
+- Gemini 1.5 flash 
 
 ## Getting started
 
-Prerequisites
+1. Prerequisites
 - Node.js (LTS)
 - npm or yarn
 - Expo CLI (optional)
 
-Clone and install
+2. Clone and install
 
 ```powershell
-git clone <your-repo-url>
+git clone https://github.com/Joyanne05/JomTravel.git
 cd jomtravel
 npm install
 ```
 
-Create a local environment file
-
-1. Copy the variable names into a `.env` file (do NOT commit this file):
+3. Copy the variable names into a `.env` file (do NOT commit this file):
 
 ```text
-API_KEY=
-GOOGLE_PLACE_API_KEY=
+API_KEY=<your-gemini-api-key>
+GOOGLE_PLACE_API_KEY=<your-google-places-api-key>
 ```
 
-2. Populate the values with keys from your Google Cloud / Firebase project.
+4. Setup Firebase  
+Create your own database and configurate in `FirebaseConfig.js`
 
-Tip: Add a `.env.example` (committed) with the variable names but no values so others know what to provide.
-
-Example generation (PowerShell):
-
-```powershell
-# Create .env.example with variable names only
-"API_KEY=" | Out-File -FilePath .env.example -Encoding utf8
-"GOOGLE_PLACE_API_KEY=" | Out-File -FilePath .env.example -Encoding utf8 -Append
-```
-
-## Environment variables used
-
-- `API_KEY` — used in `configs/FirebaseConfig.js` and `configs/AiModal.js` (Firebase and Generative AI).
-- `GOOGLE_PLACE_API_KEY` — used for Google Places/Maps requests (several components and `services/GooglePlaceApi.jsx`).
-
-This project uses `react-native-dotenv`-style imports (`@env`) — keep the actual `.env` file local and out of git.
-
-## Running the app
-
-Start the development server
+5. Run the development server
 
 ```powershell
 npm run start
@@ -74,56 +52,6 @@ npm run android
 npm run ios
 npm run web
 ```
-
-Useful scripts
-- `npm run reset-project` — moves starter code to `app-example` and creates a fresh `app` directory.
-- `npm test` — run jest tests (if present)
-- `npm run lint` — run linter
-
-## Security & publishing checklist
-
-Before publishing to GitHub, follow these steps:
-
-1. Confirm `.env` is ignored and not tracked
-
-```powershell
-# run inside repo root
-git ls-files --error-unmatch .env || echo ".env is not tracked"
-git status --porcelain
-```
-
-If `.env` is tracked, remove it from the index and commit the removal:
-
-```powershell
-git rm --cached .env
-git commit -m "Remove .env from tracking"
-```
-
-2. Ensure there are no literal secrets in tracked files
-
-Search for common patterns locally (PowerShell):
-
-```powershell
-Select-String -Path .\**\* -Pattern "AIza|AIzaSy|API_KEY|client_secret|PRIVATE_KEY|access_token" -SimpleMatch -List
-```
-
-3. Rotate exposed keys
-
-If any key was committed or pushed previously, assume compromise and revoke/rotate the keys in Google Cloud Console / Firebase. Create new keys and restrict them by referrer, package name/SHA-1, or IP where possible.
-
-4. (Optional) Purge secrets from git history
-
-If you previously pushed secrets and want to remove them from history, use `git filter-repo` or BFG Repo-Cleaner. This rewrites history and requires collaborators to re-clone. Example (BFG):
-
-```powershell
-# install BFG and then run (example)
-# bfg --delete-files .env
-# or use repo-specific patterns
-```
-
-5. Add automated checks
-
-Consider adding a pre-commit hook (husky) and a secret scanner (git-secrets, detect-secrets) to prevent future leaks.
 
 ## Project structure (high level)
 
